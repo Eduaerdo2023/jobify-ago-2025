@@ -24,6 +24,7 @@ const Register = () => {
   
   return (
     <Wrapper>
+      <div>hello</div>
       <Form className="form" method="POST">
         <Logo />
         <h4>Register</h4>

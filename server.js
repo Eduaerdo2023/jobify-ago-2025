@@ -52,7 +52,7 @@ if (process.env.NODE_ENV === "development") {
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(express.static(path.resolve(__dirname, './public')))
+app.use(express.static(path.resolve(__dirname, './client/dist')))
 
 app.get("/api/v1/test", (req, res) => {
   res.json({ msg: "Hello from the server!" });
@@ -63,7 +63,7 @@ app.use("/api/v1/auth",  authRouter);
 app.use("/api/v1/users", authenticateUser, userRouter);
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, './public', 'index.html'))
+  res.sendFile(path.resolve(__dirname, './client/dist', 'index.html'))
 });
 
 
