@@ -5,7 +5,13 @@ import day from "dayjs";
 
 export const getAllJobs = async (req, res) => {
   const { search, jobStatus, jobType, sort } = req.query;
-  const queryObject = { createdBy: req.user.userId };
+  let  queryObject  ={}
+  if(req.user.role !== 'admin') {
+    queryObject = { createdBy: req.user.userId };
+  }
+ 
+  console.log(req.user.role);
+  
   if (search) {
     queryObject.$or = [
       { position: { $regex: search, $options: "i" } },
